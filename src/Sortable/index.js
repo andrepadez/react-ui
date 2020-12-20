@@ -29,9 +29,9 @@ const Sortable = ({ children, onReorder }) => {
   }
 
   const getAfterElement = (y) => {
-    const items = [
-      ...container.querySelectorAll('.sortable-item:not(.dragging)')
-    ]
+    const items = Array.from(
+      container.querySelectorAll('.sortable-item:not(.dragging)')
+    )
 
     return items.reduce(
       (closest, element) => {
