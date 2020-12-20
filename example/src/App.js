@@ -1,10 +1,9 @@
 import React from 'react'
-
-import { ExampleComponent } from 'react-ui'
 import 'react-ui/dist/index.css'
+import Sortable from './Examples/Sortable'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <Sortable />
 }
 
 export default App

@@ -1,0 +1,7 @@
+.sortable-item {
+  cursor: all-scroll;
+
+  &.dragging {
+    opacity: 0.5;
+  }
+}
