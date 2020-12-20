@@ -12,7 +12,7 @@ const Sortable = ({ children, onReorder }) => {
   const dragEnd = (ev) => {
     dragging.classList.remove('dragging')
     dragging = null
-    const order = [...container.querySelectorAll('.sortable-item')].map(
+    const order = Array.from(container.querySelectorAll('.sortable-item')).map(
       (elem) => elem.dataset.key
     )
     onReorder && onReorder(order)
