@@ -1,6 +1,6 @@
 {
   "name": "padez-react-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "UI components for react",
   "author": "andrepadez",
   "license": "MIT",
@@ -50,7 +50,9 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "node-sass": "^4.0.0"
   }
