@@ -1,14 +1,8 @@
-.container {
-  width: 30vw;
-  margin: 200px auto;
-  padding: 50px;
+.sortable-item {
+  background-color: black;
+  color: white;
+  height: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid black;
-  .item {
-    background-color: black;
-    color: white;
-    height: 30px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid black;
-  }
 }

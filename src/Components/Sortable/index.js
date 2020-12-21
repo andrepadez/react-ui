@@ -49,6 +49,13 @@ const Sortable = ({ children, onReorder }) => {
     ).element
   }
 
+  // const bodyScroll = (ev) => ev.preventDefault()
+
+  // useEffect(() => {
+  //   document.body.addEventListener('scroll', bodyScroll)
+  //   return () => document.body.removeEventListener('scroll', bodyScroll)
+  // })
+
   return (
     <div
       ref={(ref) => (container = ref)}

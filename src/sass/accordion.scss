@@ -1,0 +1,35 @@
+.accordion {
+  .accordion-item {
+    .accordion-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      i {
+        position: absolute;
+        z-index: 3;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #000000;
+        transition: transform 0.5s;
+
+        &.open {
+          z-index: 5;
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    .accordion-content {
+      transition: max-height 0.5s;
+      overflow: hidden;
+    }
+  }
+}
