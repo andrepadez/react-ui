@@ -3,19 +3,32 @@ import React from 'react'
 const Sortable = ({ children, onReorder }) => {
   let container = null
   let dragging = null
+  let currentOrder = null
 
   const dragStart = (ev) => {
     dragging = ev.target
     dragging.classList.add('dragging')
+    const items = container.querySelectorAll('.sortable-item')
+    currentOrder = Array.from(items).map((elem) => elem.dataset.key)
   }
 
   const dragEnd = (ev) => {
+    if (!dragging) {
+      return
+    }
     dragging.classList.remove('dragging')
     dragging = null
-    const order = Array.from(container.querySelectorAll('.sortable-item')).map(
-      (elem) => elem.dataset.key
-    )
-    onReorder && onReorder(order)
+    const items = container.querySelectorAll('.sortable-item')
+    const newOrder = Array.from(items).map((elem) => elem.dataset.key)
+    if (onReorder) {
+      for (let i = 0; i < newOrder.length; i++) {
+        if (newOrder[i] !== currentOrder[i]) {
+          onReorder(newOrder)
+          currentOrder = newOrder
+          return
+        }
+      }
+    }
   }
 
   const dragOver = (ev) => {
@@ -29,9 +42,7 @@ const Sortable = ({ children, onReorder }) => {
   }
 
   const getAfterElement = (y) => {
-    const items = Array.from(
-      container.querySelectorAll('.sortable-item:not(.dragging)')
-    )
+    const items = Array.from(container.querySelectorAll('.sortable-item:not(.dragging)'))
 
     return items.reduce(
       (closest, element) => {
@@ -49,25 +60,10 @@ const Sortable = ({ children, onReorder }) => {
     ).element
   }
 
-  // const bodyScroll = (ev) => ev.preventDefault()
-
-  // useEffect(() => {
-  //   document.body.addEventListener('scroll', bodyScroll)
-  //   return () => document.body.removeEventListener('scroll', bodyScroll)
-  // })
-
   return (
-    <div
-      ref={(ref) => (container = ref)}
-      className='sortable-container'
-      onDragOver={dragOver}
-    >
+    <div ref={(ref) => (container = ref)} className="sortable-container" onDragOver={dragOver}>
       {React.Children.map(children, (child) => (
-        <SortableItem
-          orderKey={child.key}
-          dragStart={dragStart}
-          dragEnd={dragEnd}
-        >
+        <SortableItem orderKey={child.key} dragStart={dragStart} dragEnd={dragEnd}>
           {child}
         </SortableItem>
       ))}
@@ -78,9 +74,11 @@ const Sortable = ({ children, onReorder }) => {
 const SortableItem = ({ children, orderKey, dragStart, dragEnd }) => {
   return (
     <div
-      className='sortable-item'
+      className="sortable-item"
       onDragStart={dragStart}
       onDragEnd={dragEnd}
+      onTouchStart={dragStart}
+      onTouchEnd={dragEnd}
       data-key={orderKey}
       draggable
     >

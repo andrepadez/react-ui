@@ -14,3 +14,13 @@ html {
     border: 1px solid black;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .example {
+    .container {
+      width: 100vw;
+      border: none;
+      overflow: scroll;
+    }
+  }
+}

@@ -1,3 +1,13 @@
 .accordion-container {
   min-height: 80vh;
+  .accordion-item {
+    .accordion-title {
+      i {
+        transform: scale(2);
+        &.open {
+          transform: scale(2) rotate(-180deg);
+        }
+      }
+    }
+  }
 }

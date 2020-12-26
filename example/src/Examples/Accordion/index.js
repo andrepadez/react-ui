@@ -7,7 +7,7 @@ const AccordionExample = () => {
     <div className='container'>
       <div className='accordion-container'>
         <h1>Accordion</h1>
-        <Accordion>
+        <Accordion arrow={() => <>&#8595;</>}>
           <AccordionItem title='Item 1'>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

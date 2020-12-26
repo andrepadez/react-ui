@@ -1,3 +1,4 @@
+import './utils/dragdropmobile.js'
 import { Sortable } from './Components/Sortable'
 import { Accordion, AccordionItem } from './Components/Accordion'
 
